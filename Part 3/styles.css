@@ -1,0 +1,12 @@
+body{
+	background-color: gray;	
+}
+
+h1{
+	font-family: 'tahoma'
+}
+
+#inputToDO{
+	width: 250px;
+	height: 50px
+}

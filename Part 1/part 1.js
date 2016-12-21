@@ -11,9 +11,32 @@
 		showFriend(frinedData) // "Fatema with the age of 26 and with computer engineering education" 
 
 	c- create a function called avergeStudents() to calculate the average age of your class students, is it possible to pass all your class students one by one ? think of a way to pass them in your function
-*/
+	*/
 // write your code here ...
 
+function friedns(){
+	var friendsArr = [makeFriends('Hasan Name',25,'IT','Syrian'),makeFriends('Muhannad Bakkar',26,'IT','syrian')]
+	return {
+		showFriend:function(friend){
+			return friend.name + " with the age of " + friend.age + " and with " + friend.education + " education"
+		},
+		avergeStudents:function(){
+			var sumAges = friendsArr.reduce(function(acc,elem){
+				return acc + elem.age
+			},0);
+			return sumAges / friendsArr.length
+		}
+	}	
+}
+
+function makeFriends(name,age,education,nationality){
+	return{
+		name:name,
+		age:age,
+		education:education,
+		nationality:nationality
+	}
+}
 
 
 
@@ -22,9 +45,24 @@
 	in order to square the numbers create a function called square and call it inside rangeSquared function
 	rangeSquared(2)// [4];
 	rangeSquared(3) // null
-	rangeSquared(2,10)// [4,16,12,16,100];
-*/
+	rangeSquared(2,10)// [4,16,36,64,100];
+	*/
 // write your code here ...
+
+function square(num){
+	return num * num;
+}
+
+function rangeSquared(){
+	var args = Array.prototype.slice.call(arguments);
+	var finalArr = [];
+	for (var i = args[0]; i <= args[args.length-1]; i++) {
+		if (i % 2 === 0) {
+			finalArr.push(square(i));
+		}
+	}
+	return finalArr.length === 0 ? null : finalArr;
+}
 
 
 
@@ -32,7 +70,25 @@
 /* c- Find all leaders in an array. A leader is an element larger than all elements to the right of it.
  	Example:
 	leader([98, 20, 30, 5, 11, 27]) // output: [98, 30, 27]
-*/
+	*/
+
+
 
 // write your code here ....
+
+function leader(arr){
+	var res = [];
+	var led = arr[arr.length-1];
+	res.push(arr[arr.length-1])
+	for (var i = arr.length - 2; i >= 0; i--) {
+		if (arr[i]>led) {
+			res.push(arr[i])
+			led = arr[i];
+		}
+	}
+	return res.sort(function(a,b){
+		return  b - a;
+	});
+}
+
 

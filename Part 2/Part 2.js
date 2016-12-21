@@ -29,6 +29,51 @@
   g - sort the players in the arrayOfPlayers by the key
 		sortPalyerBy(arrayOfPlayers, "age");
 		sortPalyerBy(arrayOfPlayers, "name");
- */
+		*/
 
 //writ your code here .....
+
+var arrayOfPlayers = []
+function Player(name){
+	var pName = {};
+	pName.name = name;
+	pName.addInfo = addInfo;
+	pName.increaseLevel = increaseLevel;
+	pName.isAvailable = isAvailable;
+	pName.addToArr = addToArr; 
+	return pName
+}
+
+function addInfo(age, position, level, availability){
+	this.age = age;
+	this.position = position;
+	this.level = level;
+	this.availability = availability;
+	return this;
+}
+
+function increaseLevel(n){
+	this.level += n;
+	return this
+}
+
+function isAvailable(){
+	return this.availability;
+}
+
+function addToArr(){
+	arrayOfPlayers.push(this);	
+}
+
+function decrease(arr){
+	arr.map(function(elem,ind){
+		return elem.age > 30 ? elem.level +=1 : elem.level;
+	});
+	return arrayOfPlayers;
+}
+
+function sortPalyerBy(arr,keyForSort){
+	return arr.sort(function(a,b){
+		return a[keyForSort] - b[keyForSort];
+	});
+}
